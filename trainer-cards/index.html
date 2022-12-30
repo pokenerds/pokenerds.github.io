@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<head>
+<title>Trainer Card Creator (DEMO)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+<style type="text/css">
+@font-face {font-family: 'Primary'; src: url(assets/primary.otf);}
+canvas { image-rendering: crisp-edges; }
+.primary { font-family: 'Primary' !important; }
+.master { position: absolute; }
+.stack { position: absolute; }
+.cleaned { image-rendering: pixelated !important; }
+.hidden { display: none !important; }
+.drop { max-height: 400px; overflow-y: scroll; }
+.stroke { -webkit-text-stroke: 0.5px #000000; }
+</style>
+</head>
+<body class="bg-dark text-center text-light">
+    <div class="container-fluid">
+        <h1 class="display-4">Trainer Card Creator</h1>
+        </div>
+        <div class="row no-gutters m-0">
+            <div class="col-md-1"></div>
+            <div class="col-md-3 text-center">
+                <center id="i-hate-that-this-exists-in-testing" class="">
+                    <div id="cardMain" class="bg-secondary master primary" style="width:600px;height:720px;">
+                        <div id="cardEffect" class="internal stack"></div>
+                        <div id="cardPokemonArea" class="internal stack">
+                            <img id="cardPokemon" class="cleaned" alt="">
+                        </div>
+                        <div id="cardAvatarArea" class="internal stack">
+                            <img id="cardAvatar" class="cleaned" alt="">
+                        </div>
+                        <div id="cardEffect" class="internal stack"></div>
+                        <div id="cardFrame" class="internal stack"></div>
+                        <div id="cardNameArea" class="internal stack">
+                            <span id="cardName" class="primary"></span>
+                        </div>
+                        <div id="cardUserArea" class="internal stack">
+                            <span id="cardUser" class="primary"></span>
+                        </div>
+                        <div id="cardNumberArea" class="internal stack">
+                            <b id="cardNumber" class="primary"></b>
+                        </div>
+                        <div id="cardShowdown" class="showdown stack"></div>
+                    </div>
+                </center>
+                <div id="preview"></div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="form-floating text-left">
+                    <select id="background-select" class="form-select bg-dark text-light w-100">
+                        <option value="bg-League-Main" selected>League Main</option>
+                        <option value="bg-Blank-Black">Blank Black</option>
+                        <option value="bg-Blank-Blue">Blank Blue</option>
+                        <option value="bg-Blank-Green">Blank Green</option>
+                        <option value="bg-Blank-Red">Blank Red</option>
+                        <option value="bg-Blank-White">Blank White</option>
+                        <option value="bg-Blank-Yellow">Blank Yellow</option>
+                        <option value="bg-Copperajah">Copperajah</option>
+                        <option value="bg-Curry">Curry</option>
+                        <option value="bg-Gears">Gears</option>
+                        <option value="bg-Kingler">Kingler</option>
+                        <option value="bg-Lets-Go-Eevee">Let's Go, Eevee!</option>
+                        <option value="bg-Lets-Go-Pikachu">Let's Go, Pikachu!</option>
+                        <option value="bg-Mushrooms">Mushrooms</option>
+                        <option value="bg-Plaid-Blue">Plaid Blue</option>
+                        <option value="bg-Plaid-Green">Plaid Green</option>
+                        <option value="bg-Plaid-Red">Plaid Red</option>
+                        <option value="bg-Plaid-Yellow">Plaid Yellow</option>
+                        <option value="bg-Snow">Snow</option>
+                        <option value="bg-Waves">Waves</option>   
+                        <option value="bg-Wooloo">Wooloo</option>      
+                    </select>
+                    <label for="floatingSelectGrid">Background Select</label>
+                </div>
+                <br>
+                <div class="form-floating text-center">
+                    <select id="frame-select" class="form-select bg-dark text-light w-100">
+                        <option value="frm-None" selected>None</option>
+                        <option value="frm-Default-Red">Default Red</option>
+                        <option value="frm-Default-Blue">Default Blue</option>
+                        <option value="frm-Default-Black">Default Black</option>
+                        <option value="frm-Sport-Green">Sport Green</option>
+                        <option value="frm-Sport-Orange">Sport Orange</option>
+                    </select>
+                    <label for="floatingSelectGrid">Frame Select</label>
+                </div>
+                <br>
+                <div class="form-floating text-center">
+                    <select id="effect-select" class="form-select bg-dark text-light w-100">
+                        <option value="eft-None" selected>None</option>
+                        <option value="eft-Action">Action</option>
+                        <option value="eft-Fog">Fog</option>
+                    </select>
+                    <label for="floatingSelectGrid">Effect Select</label>
+                </div>
+                <br>
+                <div class="form-floating mb-3">
+                    <input maxlength="10" class="form-control bg-dark text-light w-100" id="trainer-name" placeholder="Ash">
+                    <label for="floatingInput">Trainer Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input maxlength="19" class="form-control bg-dark text-light w-100" id="user-name" placeholder="TheRealAshKetch">
+                    <label for="floatingInput">Showdown Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input maxlength="3" class="form-control bg-dark text-light w-100" id="trainer-number" placeholder="001">
+                    <label for="floatingInput">Trainer Jersey</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control bg-dark text-light w-100" id="trainer-avatar" placeholder="ash">
+                    <label for="floatingInput">Trainer Avatar</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control bg-dark text-light w-100" id="pokemon-avatar" placeholder="ash">
+                    <label for="floatingInput">Pokemon Avatar</label>
+                </div>
+                <div class="form-floating text-center">
+                    <select id="shiny-select" class="form-select bg-dark text-light w-100">
+                        <option value="NO" selected>No</option>
+                        <option value="YES">Yes</option>
+                    </select>
+                    <label for="floatingSelectGrid">Use Shiny Pokemon</label>
+                </div>
+                <br>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control bg-dark text-light w-100" id="showdown-export" placeholder="ash">
+                    </textarea>
+                    <label for="floatingInput">Showdown Team</label>
+                </div>
+                <br>
+                <button id="finalize" class="btn btn-primary text-light w-100">Finalize</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="html2canvas.min.js"></script>
+<script src="generator.min.js"></script>
+</html>
