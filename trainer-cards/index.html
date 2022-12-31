@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/fonts.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <style type="text/css">
-@font-face {font-family: 'Primary'; src: url(assets/primary.otf);}
 canvas { image-rendering: crisp-edges; }
 .primary { font-family: 'Primary' !important; }
 .master { position: absolute; }
@@ -20,7 +20,7 @@ canvas { image-rendering: crisp-edges; }
 </head>
 <body class="bg-dark text-center text-light">
     <div class="container-fluid">
-        <h1 class="display-4">Trainer Card Creator</h1>
+        <h1 class="display-4">Trainer Card Creator (DEMO)</h1>
         </div>
         <div class="row no-gutters m-0">
             <div class="col-md-1"></div>
@@ -37,13 +37,13 @@ canvas { image-rendering: crisp-edges; }
                         <div id="cardEffect" class="internal stack"></div>
                         <div id="cardFrame" class="internal stack"></div>
                         <div id="cardNameArea" class="internal stack">
-                            <span id="cardName" class="primary"></span>
+                            <span id="cardName" class="font-card"></span>
                         </div>
                         <div id="cardUserArea" class="internal stack">
-                            <span id="cardUser" class="primary"></span>
+                            <span id="cardUser" class="font-card"></span>
                         </div>
                         <div id="cardNumberArea" class="internal stack">
-                            <b id="cardNumber" class="primary"></b>
+                            <b id="cardNumber" class="font-card"></b>
                         </div>
                         <div id="cardShowdown" class="showdown stack"></div>
                     </div>
